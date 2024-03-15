@@ -43,6 +43,8 @@ namespace NajottalimCRM1.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+       
         
     }
 }

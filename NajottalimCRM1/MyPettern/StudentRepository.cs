@@ -59,11 +59,18 @@ namespace NajottalimCRM1.MyPettern
 
             }
         
-    }    
+        }    
 
         public IEnumerable<Student> GetById(int id)
         {
-            throw new NotImplementedException();
+            using (var conenection = new NpgsqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                string query = $"select *from students where id = {id}";
+                var result = conenection.Query<Student>(query);
+                return result;
+
+            }
+
         }
 
         public Student Update(int id, StudentDTO studentdto)
